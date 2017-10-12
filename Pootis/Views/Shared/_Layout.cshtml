@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - P??tis kysymykset</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.js"></script>*@
+
+    
+    <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6047018120618300",
+    enable_page_level_ads: true
+  });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("P??tis kysymykset", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - <a href="https://www.youtube.com/channel/UCRe-_wcy1CMq4GZW2WW2oCg" target="_blank">Pootis TV (YouTube)</a></p>
+            <p>YouTube on Googlen omistama Internetissä toimiva videopalvelu. Käyttäjät voivat lisätä sivustolle omia videoitaan, sekä katsoa ja kommentoida muiden käyttäjien videoita. Sivuston perusti 14. helmikuuta 2005 kolme PayPalin työntekijää: Chad Hurley, Steve Chen ja Jawed Karim. YouTuben pääkonttori sijaitsee San Brunossa, Kaliforniassa ja sen toimitusjohtajana on toiminut Susan Wojcicki helmikuusta 2014 lähtien.[3]
+
+YouTube on Internetin suosituin suoratoistovideopalvelu.[4][5] YouTubeen ladataan joka minuutti 100 tuntia videosisältöä, eli yhdessä vuorokaudessa sisältöä ladataan yli 16 vuoden edestä. Päivittäin palvelussa katsotaan yli neljä miljardia[6] videota ja kuukaudessa YouTubessa käy yli miljardi erillistä käyttäjää.[7] Suomessa YouTube on toiseksi suosituin verkkosivusto.[8]
+
+YouTuben videoiden formaattina käytetään vapaata VP9 pakkausta, joka tukee Ultra HD kuvanlaatua 60 kuvan kuvataajuudella. HTML5-soitin on ollut testikäytössä vuodesta 2010 lähtien[9] ja YouTuben Engineering and Developers Blogissa ilmoitettiin HTML5-soittimen siirtyneen sivuston oletusvaihtoehtoksi videoita katseltaessa 27. tammikuuta 2015.[</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

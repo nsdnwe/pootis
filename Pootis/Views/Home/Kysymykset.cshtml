@@ -1,0 +1,98 @@
+﻿@model Pootis.Models.QuestionsVm
+
+@{
+    ViewBag.Title = "Kysymykset";
+    string id1 = "";
+    string id2 = "";
+    string id3 = "";
+}
+<style>
+    td{padding: 10px}
+</style>
+
+<div class="col-lg-3 pull-right" style="position:fixed; right: 60px; top: 60px;">
+    <div class="well well-small">
+        Voittosi: <strong><span id="result">1 000 000€</span></strong>
+    </div>
+</div>
+
+<span id="question-count" style="display:none">@Model.Questions.Length</span>
+
+@for (int i = 0; i < Model.Questions.Length; i++) {
+    <h1>@Model.Questions[i][0]</h1>
+    <table>
+        <tr>
+            <td><button class="btn btn-primary" onclick="answer(@i, @Model.Order[i, 0] == 1, this)">1</button></td>
+            <td>@Model.Questions[i][Model.Order[i, 0]]</td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-primary" onclick="answer(@i, @Model.Order[i, 1] == 1, this)">2</button></td>
+            <td>@Model.Questions[i][Model.Order[i, 1]]</td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-primary" onclick="answer(@i, @Model.Order[i, 2] == 1, this)">3</button></td>
+            <td>@Model.Questions[i][Model.Order[i, 2]]</td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-primary" onclick="answer(@i, @Model.Order[i, 3] == 1, this)">4</button></td>
+            <td>@Model.Questions[i][Model.Order[i, 3]]</td>
+        </tr>
+    </table>
+
+    id1 = "correct-" + i.ToString();
+    id2 = "incorrect-" + i.ToString();
+
+    <div id="@id1" class="alert alert-dismissible alert-success" style="display:none">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oikein!</strong>
+    </div>
+
+    <div id="@id2" class="alert alert-dismissible alert-danger" style="display:none">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Väärin</strong>
+    </div>
+}
+
+<div id="ended" class="alert alert-dismissible alert-success" style="display:none">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Kaikkiin on vastattu</strong>
+</div>
+
+
+<script>
+    var used = new Array();
+    var answersCount = 0
+    var stopped = false
+    function answer(index, correct, element) {
+        if (used.indexOf(index) != -1) return;
+        answersCount++
+        if (correct) {
+            $("#correct-" + index).show()
+            $(element).css("background-color", "green");
+        } else {
+            $("#incorrect-" + index).show()
+            $(element).css("background-color", "red");
+            result = result - 60000
+        }
+        used.push(index)
+        var qc = $("#question-count").text()
+        if (answersCount == qc) {
+            stopped = true
+            $("#ended").show()
+        }
+    }
+
+    var result = 1000000
+    var myVar = setInterval(myTimer, 100);
+
+    function myTimer() {
+        if(stopped) return
+        result = result - 1000
+        if (result < 0) result = 0 
+        var value = result.toLocaleString(
+          undefined, // use a string like 'en-US' to override browser locale
+          { minimumFractionDigits: 0 }
+        );
+        $("#result").text(value + "€") 
+    }
+</script>
